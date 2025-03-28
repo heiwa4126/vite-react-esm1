@@ -1,0 +1,12 @@
+* text=auto eol=lf
+*.{cmd,[cC][mM][dD]} text eol=crlf
+*.{bat,[bB][aA][tT]} text eol=crlf
+*.{reg,[rR][eE][gG]} text eol=crlf encoding=UTF-16LE-BOM
+*.lockb binary diff=lockb
+
+*.ipynb filter=nbstripout
+*.zpln filter=nbstripout
+*.ipynb	diff=jupyternotebook
+*.ipynb	merge=jupyternotebook
+
+*.ipynb diff=ipynb

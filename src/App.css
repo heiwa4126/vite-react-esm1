@@ -1,0 +1,8 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+.btn1 {
+	@apply bg-orange-500 text-white font-bold rounded-full px-7 py-1;
+	@apply hover:bg-orange-600 active:bg-orange-700;
+	@apply focus:outline-none focus:ring-2 focus:ring-orange-400;
+}
