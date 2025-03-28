@@ -1,5 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Noto+Sans+JP&display=swap");
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
+
+@theme {
+	--font-sans:
+		"Noto Sans JP", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+		"Noto Color Emoji";
+	--font-serif: "Dela Gothic One", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+}
 
 .btn1 {
 	@apply bg-orange-500 text-white font-bold rounded-full px-7 py-1;
