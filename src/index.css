@@ -1,1 +1,5 @@
-/**/
+@import url("https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Noto+Sans+JP&display=swap");
+/*
+- フォントは複数いっぺんに読める
+- フォントのimportは `@import "tailwindcss"` より前に書くこと
+*/
