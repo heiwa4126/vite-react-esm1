@@ -7,9 +7,13 @@ ESM ベースの CDN が推奨になりました。
 (参照: [UMD ビルドの削除](https://ja.react.dev/blog/2024/04/25/react-19-upgrade-guide#umd-builds-removed))
 
 [importmap](https://developer.mozilla.org/ja/docs/Web/HTML/Element/script/type/importmap)
-を使って、お手軽に ESM 対応にしてみましょう。
+を使って、お手軽に ESM CDN 対応にしてみましょう。
+importmap を使うと、
+既存の js,ts,jsx,tsx 文中の import 文を修正することなく、モジュールの読込先を変更できます。
 
-## 手順
+参考: [8\.1\.5\.2 Import maps - HTML Living Standard](https://html.spec.whatwg.org/multipage/webappapis.html#import-maps)
+
+## 実習
 
 ここでは [pnpm](https://pnpm.io/ja/) を使いますが、npm や bun でも手順はおおむね一緒です。
 
@@ -28,7 +32,7 @@ pnpm run build && pnpm run preview
 で <http://localhost:4173/> を開いて、動作確認してください。
 よくある Vite のサンプルが見えるはずです。
 
-次は
+次はこれを
 ESM 対応にしてみます。
 
 まず、`./index.html` を編集して、\</head\> の直前に
@@ -67,8 +71,11 @@ export default defineConfig({
 'react-dom/client' のかわりに 'react-dom'　や 'react-dom/\*' とは書けないようです。
 
 あとは `pnpm build && pnpm preview` で、
-バンドルサイズが減ったことと、
-<http://localhost:4173/> を開いて、動作確認してください。
+
+- バンドルサイズが減ったこと
+- <http://localhost:4173/> を開いて、同じ動作になること
+
+を確認してください。
 
 ## いまのところの欠点
 
