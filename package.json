@@ -1,35 +1,28 @@
 {
-	"name": "tailwind-learn4",
+	"name": "vite-react-esm1",
 	"private": true,
 	"version": "0.0.0",
 	"type": "module",
 	"scripts": {
 		"dev": "vite",
 		"build": "tsc -b && vite build",
-		"lint": "eslint .",
 		"preview": "vite preview",
-		"format": "biome format --write . && dprint fmt  && textlint --fix \"**/*.md\"",
-		"check": "biome check --write . && dprint check"
+		"format": "biome format --write . && dprint fmt  && textlint --fix \"**/*.md\""
 	},
 	"dependencies": {
-		"react": "^18",
-		"react-dom": "^18",
-		"tailwindcss": "^4.0.17"
+		"react": "^19.0.0",
+		"react-dom": "^19.0.0"
 	},
 	"devDependencies": {
-		"@eslint/js": "^9.23.0",
-		"@tailwindcss/typography": "^0.5.16",
-		"@tailwindcss/vite": "^4.0.17",
-		"@tomjs/vite-plugin-html": "^1.5.2",
-		"@types/react": "^18",
-		"@types/react-dom": "^18",
+		"@eslint/js": "^9.21.0",
+		"@types/react": "^19.0.10",
+		"@types/react-dom": "^19.0.4",
 		"@vitejs/plugin-react": "^4.3.4",
-		"eslint": "^9.23.0",
-		"eslint-plugin-react-hooks": "^5.2.0",
-		"eslint-plugin-react-refresh": "^0.4.19",
 		"globals": "^15.15.0",
-		"typescript": "~5.7.3",
-		"typescript-eslint": "^8.28.0",
-		"vite": "^6.2.3"
+		"typescript": "~5.7.2",
+		"vite": "^6.2.0"
+	},
+	"pnpm": {
+		"onlyBuiltDependencies": ["esbuild"]
 	}
 }
