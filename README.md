@@ -20,7 +20,7 @@ importmap を使うと、
 まず vite create でプロジェクトを作成します。
 
 2025 年 4 月現在、create vite は React 19 を最初から使うようになっています。
-package.json を開いて確認し、React 19 でなければ修正してください。
+package.json を確認し、React 19 でなければ修正してください。
 
 ```sh
 pnpm create vite vite-react-esm1 --template react-ts
@@ -40,7 +40,7 @@ ESM 対応にしてみます。
 
 ```html
 <head>
-  /*...*/
+  /*...略...*/
   <script type="importmap">
     {
       "imports": {
@@ -53,11 +53,11 @@ ESM 対応にしてみます。
 ```
 
 つぎに `./vite.config.ts` を編集して
-defineConfig に rollup のオプションを追加してください。
+defineConfig に [Rollup](https://rollupjs.org/) のオプションを追加してください。
 
 ```typescript
 export default defineConfig({
-  //...
+  //...略...
   build: {
     rollupOptions: {
       external: ["react", "react-dom/client"],
@@ -70,7 +70,7 @@ export default defineConfig({
 バンドルから除外するのは `src/main.tsx`などで import しているモジュールをそのまま書きます。
 'react-dom/client' のかわりに 'react-dom'　や 'react-dom/\*' とは書けないようです。
 
-あとは `pnpm build && pnpm preview` で、
+あとは `pnpm run build && pnpm run preview` で、
 
 - バンドルサイズが減ったこと
 - <http://localhost:4173/> を開いて、同じ動作になること
