@@ -8,8 +8,7 @@ ESM ベースの CDN が推奨になりました。
 
 [importmap](https://developer.mozilla.org/ja/docs/Web/HTML/Element/script/type/importmap)
 を使って、お手軽に ESM CDN 対応にしてみましょう。
-importmap を使うと、
-既存の js,ts,jsx,tsx 文中の import 文を修正することなく、モジュールの読込先を変更できます。
+**importmap を使うと、既存の js, ts, jsx, tsx 文中の import 文を修正することなく**、モジュールの読込先を変更できます。
 
 参考: [8\.1\.5\.2 Import maps - HTML Living Standard](https://html.spec.whatwg.org/multipage/webappapis.html#import-maps)
 
@@ -19,8 +18,8 @@ importmap を使うと、
 
 まず vite create でプロジェクトを作成します。
 
-2025 年 4 月現在、create vite は React 19 を最初から使うようになっています。
-package.json を確認し、React 19 でなければ修正してください。
+2025 年 4 月現在、create vite の react テンプレートは React 19 を最初から使うようになっていました。
+package.json を確認し、もし 19 でなければ適宜修正してください。
 
 ```sh
 pnpm create vite vite-react-esm1 --template react-ts
@@ -45,16 +44,12 @@ ESM 対応にしてみます。
     {
       "imports": {
         "react": "https://esm.sh/react@19",
-        "react-dom/": "https://esm.sh/react-dom@19/"
+        "react-dom/client": "https://esm.sh/react-dom@19/client"
       }
     }
   </script>
 </head>
 ```
-
-最後の`/` があったりなかったりする件は
-[Using Import Maps](https://esm.sh/#using-import-maps)
-を参照。
 
 つぎに `./vite.config.ts` を編集して
 defineConfig に [Rollup](https://rollupjs.org/) のオプションを追加してください。
@@ -85,8 +80,10 @@ export default defineConfig({
 
 ## いまのところの欠点
 
-- `pnpm dev` で開発時にも importmap を呼んでしまう。
-- モジュールのリストのメンテが手動。プラグインで自動で処理できればいいんですが。
+- `pnpm run dev` で開発時にも importmap を呼んでしまうかもしれない
+  (なぜ「かもしれない」かというと、開発者ツールで見ると、importmap の部分を読んでる形跡がないから)。
+- モジュールのリストのメンテが手動。プラグインで自動処理とかできればいいんですが。
+- 「Next.js で SSR」とかの場合どうなるか不明。まあ動くとは思えませんが。
 
 ## `?dev`
 
@@ -112,10 +109,38 @@ export { default } from "/react@19.1.0/es2022/react.mjs";
 
 ## esm.sh 以外の importmap 対応 CDN
 
+importmap 対応をうたっている CDN は以下のものがあります。
+
 - [JSPM - jspm.io](https://jspm.org/cdn/jspm-io)
 - [Skypack: search millions of open source JavaScript packages](https://www.skypack.dev/)
 
-ただ両方とも 2025 年 4 月現在、React 19 はありませんでした。
+ただ両方とも 2025 年 4 月現在、React 19 は見つかりませんでした。
+
+jsDelivr では
+
+```html
+<script type="importmap">
+  {
+    "imports": {
+      "react": "https://cdn.jsdelivr.net/npm/react@19/+esm",
+      "react-dom/client": "https://cdn.jsdelivr.net/npm/react-dom@19/client/+esm"
+    }
+  }
+</script>
+```
+
+のように書けば、とりあえず動きます
+(ESM で import に書くのと同じ URL)。
+複雑な依存を持つモジュールで動くかは確認してません。
+<https://cdn.jsdelivr.net/npm/react-dom@19/client/+esm> の冒頭を見ると、
+それなりに変換しているようなので、動く可能性は高いです。
+esm.sh や jsdelivr は、例えば lodash のような cjs でしか提供されていないモジュールも、esbuild や rollup で ESM 化しているようです。
+
+参考: [Migrate from esm.sh to jsDelivr](https://www.jsdelivr.com/esmsh)
+
+一方
+unpkg や cdnjs は明示的に ESM を指定する方法がないようです。
+unpkg では「?module を付ける or .mjs を直接指定」で行ける、という話を見つけましたが未確認。
 
 ## esm.sh/tsx を使えば JSX が \<script\> に書ける
 
@@ -123,4 +148,4 @@ export { default } from "/react@19.1.0/es2022/react.mjs";
 [Using esm\.sh/tsx](https://esm.sh/#tsx)
 にコピペで実行できる HTML が載ってるので、試してみてください。
 
-サンプルは [esm-dev/tsx: A TSX transpiler for esm.sh services.](https://github.com/esm-dev/tsx#readme) の方がちょっと新しいです。
+サンプルは [esm-dev/tsx: A TSX transpiler for esm.sh services.](https://github.com/esm-dev/tsx#readme) の方がちょっと新しい。
