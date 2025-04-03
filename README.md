@@ -25,7 +25,7 @@ package.json を確認し、React 19 でなければ修正してください。
 ```sh
 pnpm create vite vite-react-esm1 --template react-ts
 cd vite-react-esm1
-pnpm i
+pnpm install
 pnpm run build && pnpm run preview
 ```
 
@@ -45,12 +45,16 @@ ESM 対応にしてみます。
     {
       "imports": {
         "react": "https://esm.sh/react@19",
-        "react-dom/client": "https://esm.sh/react-dom@19/client"
+        "react-dom/": "https://esm.sh/react-dom@19/"
       }
     }
   </script>
 </head>
 ```
+
+最後の`/` があったりなかったりする件は
+[Using Import Maps](https://esm.sh/#using-import-maps)
+を参照。
 
 つぎに `./vite.config.ts` を編集して
 defineConfig に [Rollup](https://rollupjs.org/) のオプションを追加してください。
@@ -77,6 +81,8 @@ export default defineConfig({
 
 を確認してください。
 
+これでバンドルと ESM CDN の両方の利点を生かしたフロントエンドが出来上がりました。
+
 ## いまのところの欠点
 
 - `pnpm dev` で開発時にも importmap を呼んでしまう。
@@ -102,7 +108,7 @@ export * from "/react@19.1.0/es2022/react.mjs";
 export { default } from "/react@19.1.0/es2022/react.mjs";
 ```
 
-参照: [ESM>CDN](https://esm.sh/#docs)の "Development Build" の節
+参照: ESM>CDN の "[Development Build](https://esm.sh/#development-build)" の節
 
 ## esm.sh 以外の importmap 対応 CDN
 
@@ -110,3 +116,11 @@ export { default } from "/react@19.1.0/es2022/react.mjs";
 - [Skypack: search millions of open source JavaScript packages](https://www.skypack.dev/)
 
 ただ両方とも 2025 年 4 月現在、React 19 はありませんでした。
+
+## esm.sh/tsx を使えば JSX が \<script\> に書ける
+
+その他、esm.sh で面白いのは `esm.sh/tsx`。
+[Using esm\.sh/tsx](https://esm.sh/#tsx)
+にコピペで実行できる HTML が載ってるので、試してみてください。
+
+サンプルは [esm-dev/tsx: A TSX transpiler for esm.sh services.](https://github.com/esm-dev/tsx#readme) の方がちょっと新しいです。
