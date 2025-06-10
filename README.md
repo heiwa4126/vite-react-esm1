@@ -8,7 +8,7 @@ ESM ベースの CDN が推奨になりました。
 
 [importmap](https://developer.mozilla.org/ja/docs/Web/HTML/Element/script/type/importmap)
 を使って、お手軽に ESM CDN 対応にしてみましょう。
-**importmap を使うと、既存の js, ts, jsx, tsx 文中の import 文を修正することなく**、モジュールの読込先を変更できます。
+**importmap を使うと、既存の js, ts, jsx, tsx 文中の import 文を修正することなく**、モジュールの読込元を変更できます。
 
 参考: [8\.1\.5\.2 Import maps - HTML Living Standard](https://html.spec.whatwg.org/multipage/webappapis.html#import-maps)
 
