@@ -11,18 +11,20 @@
 		"format": "biome format --write . && dprint fmt  && textlint --fix \"**/*.md\""
 	},
 	"dependencies": {
-		"react": "^19.1.0",
-		"react-dom": "^19.1.0"
+		"react": "^19.2.1",
+		"react-dom": "^19.2.1"
 	},
 	"devDependencies": {
-		"@types/react": "^19.1.7",
-		"@types/react-dom": "^19.1.6",
-		"@vitejs/plugin-react": "^4.5.2",
-		"globals": "^16.2.0",
-		"typescript": "~5.8.3",
-		"vite": "^6.3.5"
+		"@types/react": "^19.2.7",
+		"@types/react-dom": "^19.2.3",
+		"@vitejs/plugin-react": "^5.1.1",
+		"globals": "^16.5.0",
+		"typescript": "~5.9.3",
+		"vite": "^7.2.7"
 	},
 	"pnpm": {
-		"onlyBuiltDependencies": ["esbuild"]
+		"onlyBuiltDependencies": [
+			"esbuild"
+		]
 	}
 }
