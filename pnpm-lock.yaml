@@ -25,8 +25,8 @@ importers:
         specifier: ^5.1.1
         version: 5.1.1(vite@7.2.7)
       globals:
-        specifier: ^16.5.0
-        version: 16.5.0
+        specifier: ^17.3.0
+        version: 17.3.0
       typescript:
         specifier: ~5.9.3
         version: 5.9.3
@@ -490,8 +490,8 @@ packages:
     resolution: {integrity: sha512-3hN7NaskYvMDLQY55gnW3NQ+mesEAepTqlg+VEbj7zzqEMBVNhzcGYYeqFo/TlYz6eQiFcp1HcsCZO+nGgS8zg==}
     engines: {node: '>=6.9.0'}
 
-  globals@16.5.0:
-    resolution: {integrity: sha512-c/c15i26VrJ4IRt5Z89DnIzCGDn9EcebibhAOjw5ibqEHsE1wLUgkPn9RDmNcUKyU87GeaL633nyJ+pplFR2ZQ==}
+  globals@17.3.0:
+    resolution: {integrity: sha512-yMqGUQVVCkD4tqjOJf3TnrvaaHDMYp4VlUSObbkIiuCPe/ofdMBFIAcBbCSRFWOnos6qRiTVStDwqPLUclaxIw==}
     engines: {node: '>=18'}
 
   js-tokens@4.0.0:
@@ -1003,7 +1003,7 @@ snapshots:
 
   gensync@1.0.0-beta.2: {}
 
-  globals@16.5.0: {}
+  globals@17.3.0: {}
 
   js-tokens@4.0.0: {}
 
