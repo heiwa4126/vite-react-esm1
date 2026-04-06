@@ -20,7 +20,7 @@
 		"@vitejs/plugin-react": "^5.2.0",
 		"globals": "^17.4.0",
 		"typescript": "~6.0.2",
-		"vite": "^7.2.7"
+		"vite": "^7.3.2"
 	},
 	"pnpm": {
 		"onlyBuiltDependencies": [
