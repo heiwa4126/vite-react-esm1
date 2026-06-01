@@ -1,21 +1,23 @@
 {
 	"name": "vite-react-esm1",
-	"private": true,
 	"version": "0.0.0",
+	"private": true,
 	"type": "module",
 	"scripts": {
 		"dev": "vite",
 		"build": "tsc -b && vite build",
 		"preview": "vite preview",
 		"bp": "tsc -b && vite build && vite preview",
-		"format": "biome format --write . && dprint fmt  && textlint --fix \"**/*.md\""
+		"format": "oxfmt",
+		"lint": "oxlint",
+		"check": "oxfmt && oxlint --fix"
 	},
 	"dependencies": {
 		"react": "^19.2.6",
-		"react-dom": "^19.2.1"
+		"react-dom": "^19.2.6"
 	},
 	"devDependencies": {
-		"@types/react": "^19.2.14",
+		"@types/react": "^19.2.15",
 		"@types/react-dom": "^19.2.3",
 		"@vitejs/plugin-react": "^5.2.0",
 		"globals": "^17.6.0",

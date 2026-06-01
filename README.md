@@ -39,15 +39,15 @@ ESM 対応にしてみます。
 
 ```html
 <head>
-  /*...略...*/
-  <script type="importmap">
-    {
-      "imports": {
-        "react": "https://esm.sh/react@19",
-        "react-dom/client": "https://esm.sh/react-dom@19/client"
-      }
-    }
-  </script>
+	/*...略...*/
+	<script type="importmap">
+		{
+			"imports": {
+				"react": "https://esm.sh/react@19",
+				"react-dom/client": "https://esm.sh/react-dom@19/client"
+			}
+		}
+	</script>
 </head>
 ```
 
@@ -56,12 +56,12 @@ defineConfig に [Rollup](https://rollupjs.org/) のオプションを追加し�
 
 ```typescript
 export default defineConfig({
-  //...略...
-  build: {
-    rollupOptions: {
-      external: ["react", "react-dom/client"],
-    },
-  },
+	//...略...
+	build: {
+		rollupOptions: {
+			external: ["react", "react-dom/client"],
+		},
+	},
 });
 ```
 
@@ -120,12 +120,12 @@ jsDelivr では
 
 ```html
 <script type="importmap">
-  {
-    "imports": {
-      "react": "https://cdn.jsdelivr.net/npm/react@19/+esm",
-      "react-dom/client": "https://cdn.jsdelivr.net/npm/react-dom@19/client/+esm"
-    }
-  }
+	{
+		"imports": {
+			"react": "https://cdn.jsdelivr.net/npm/react@19/+esm",
+			"react-dom/client": "https://cdn.jsdelivr.net/npm/react-dom@19/client/+esm"
+		}
+	}
 </script>
 ```
 
